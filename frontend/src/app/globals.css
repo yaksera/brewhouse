@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --bh-cream: #f8f1e8;
+  --bh-sand: #eee5da;
+  --bh-oat: #ece2d2;
+  --bh-roast: #3e2a22;
+  --bh-espresso: #4a2e24;
+  --bh-text: #4b4038;
+  --bh-sage: #677a5c;
+  --bh-sage-dark: #333f30;
+  --bh-taupe: #aca087;
+  --bh-matcha: #bfd9ae;
+  --bh-mint: #ddebcf;
+}
+
+@theme inline {
+  --color-cream: var(--bh-cream);
+  --color-sand: var(--bh-sand);
+  --color-oat: var(--bh-oat);
+  --color-roast: var(--bh-roast);
+  --color-espresso: var(--bh-espresso);
+  --color-body: var(--bh-text);
+  --color-sage: var(--bh-sage);
+  --color-sage-dark: var(--bh-sage-dark);
+  --color-taupe: var(--bh-taupe);
+  --color-matcha: var(--bh-matcha);
+  --color-mint: var(--bh-mint);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-dm-serif);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  background: var(--bh-cream);
+  color: var(--bh-text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/*
+ * Hover transitions for elements GSAP also animates. Tailwind's `transition` includes
+ * opacity/transform/visibility, which fights GSAP (under StrictMode it can capture a
+ * mid-transition value as the tween's end state). Hover lifts use `translate`, which GSAP doesn't touch.
+ */
+@utility transition-ui {
+  transition-property: color, background-color, border-color, box-shadow, translate;
+  transition-timing-function: var(--default-transition-timing-function);
+  transition-duration: var(--default-transition-duration);
+}
